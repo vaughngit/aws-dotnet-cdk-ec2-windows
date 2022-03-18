@@ -18,9 +18,17 @@
     cdk synth
     cdk bootstrap
     cdk deploy 
+* note the "InstanceId", "Password", and "UserName" Outputs that will be displayed in your desktop terminal console once deployment completes. 
 
-### See this reference for addditional guidance in setting up CDK within your AWS Environment: https://docs.aws.amazon.com/cdk/v2/guide/cli.html
+### RDP into instace from browser via the System Manager's Fleet Manager console feature: 
+* The Google Chrome browser appears to provide the best experience (ie copy/paste features) 
+   1)  From the AWS Home Page Console navigate to -> Systems Manager Console- > Fleet Manager feature under the "Node Management" header and the newly deployed ec2 instance should be listed in the "Managed nodes" list on this landing page.  
+   2) Check the box next to the new windows ec2 instance
+   3) Select the "Node action" dropdown in the top right-hand corner and select the "Connect with Remote Desktop" under the "Connect" header  
+   4) Enter the username and password displayed in the your local desktop termainal console noted above and select the "Connect" button
+   5) Once connected click on the instanceid in the header section to expand the remote display or select the full screen option in the top right-hand coner of the display.  
 
+* See this reference for addditional guidance in setting up CDK within your AWS Environment: https://docs.aws.amazon.com/cdk/v2/guide/cli.html
 
 ## Useful commands
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
