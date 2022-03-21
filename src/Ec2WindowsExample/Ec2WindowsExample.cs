@@ -50,21 +50,29 @@ namespace Ec2WindowsExample
                 ManagedPolicies = new[] 
                 { 
                     ManagedPolicy.FromAwsManagedPolicyName("AmazonSSMManagedInstanceCore"),
-                    ManagedPolicy.FromAwsManagedPolicyName("CloudWatchLogsFullAccess")
+                   // ManagedPolicy.FromAwsManagedPolicyName("CloudWatchLogsFullAccess")
                 }
   
             }) ;
 
-            /*  Add inline policy to role created above */
-            //role.AddToPolicy(new PolicyStatement(new PolicyStatementProps
-            //{
-            //    Sid = "DescribeLogGroup",
-            //    Effect = Effect.ALLOW,
-            //     Actions = new[] { "logs:DescribeLogGroup" }
-            //    Resources = new[] {string.Format("arn:aws:logs:us-east-1:{0}:log-group:*", System.Environment.GetEnvironmentVariable("CDK_DEFAULT_ACCOUNT")) },
-            //    
-            //}));
+            ///*  Add inline policy to role created above */
+            role.AddToPolicy(new PolicyStatement(new PolicyStatementProps
+            {
 
+                Effect = Effect.ALLOW,
+                Actions = new[] { "logs:DescribeLogGroups", "logs:CreateLogGroup" },
+                Resources = new[] { "*" }
+
+            }));
+            role.AddToPolicy(new PolicyStatement(new PolicyStatementProps
+            {
+
+                Effect = Effect.ALLOW,
+                Actions = new[] { "logs:CreateLogStream", "logs:DescribeLogStreams", "logs:PutLogEvents" },
+                //Resources = new[] { "arn:aws:logs:*:*:log-group:/aws/systemManager/SessionManagerLogs" }, //specify write only to specific logGroup
+                Resources = new[] { "*" },
+
+            }));
 
             /*Configure UserData Scripts to create demouser and install base webserver */
             MultipartUserData multipartUserData = new MultipartUserData();
