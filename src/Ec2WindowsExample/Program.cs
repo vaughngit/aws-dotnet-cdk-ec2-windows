@@ -41,7 +41,7 @@ namespace Ec2WindowsExample
 
             Tags.Of(app).Add("solution", "Systems Manager Fleet Manager RDP Demo");
             Tags.Of(app).Add("environment", "test");
-            Tags.Of(app).Add("costcenter", "customer-demos"); 
+            Tags.Of(app).Add("costcenter", "dept-name"); 
             
             app.Synth();
         }
