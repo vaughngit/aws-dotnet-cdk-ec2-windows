@@ -1,13 +1,15 @@
-# AWS CDK C# Windows EC2 project
+# AWS CDK C# Windows EC2 Instance
 This AWS CDK project written in C# deploys a single Windows EC2 instance to the default VPC, with permission to integrate with AWS Systems Manager Session Manager and Fleet Manager remote desktop features. A security group is created that blocks all inbound access over the network to the instance therefore terminal and console access can only be achieved via the AWS Systems Manager
 
 ## CDK prerequisites: 
-#### 1)  AWS CLI - Installing or updating the latest version of the AWS CLI: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-#### 2) Configure the AWS CLI:  https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-environment
+*  AWS CLI - Installing or updating the latest version of the AWS CLI: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+* Configure the AWS CLI:  https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-environment
     aws configure
 
 ## Install the CDK: 
-#### The AWS CDK Toolkit is installed via the Node Package Manager which can be found and downloaded from here (https://nodejs.org/en/download/) and for this project ensure the dotnet sdk is installed: (https://dotnet.microsoft.com/en-us/download)
+* The AWS CDK Toolkit is installed via the Node Package Manager which can be found and downloaded from here (https://nodejs.org/en/download/)
+* This project also requires the dotnet sdk which can be downloaded here for installation: (https://dotnet.microsoft.com/en-us/download)
+
     npm install -g aws-cdk             # install latest version
 
 ### Download this project via browser or git cli: (https://git-scm.com/downloads) 
@@ -17,10 +19,10 @@ This AWS CDK project written in C# deploys a single Windows EC2 instance to the 
     cdk synth
     cdk bootstrap
     cdk deploy 
-* note the "InstanceId", "Password", and "UserName" Outputs that will be displayed in your desktop terminal console once deployment completes. 
+> note the "InstanceId", "Password", and "UserName" Outputs that will be displayed in your desktop terminal console once deployment completes. 
 
 ## RDP into instace from browser via the System Manager's Fleet Manager console feature: 
-* The Google Chrome browser appears to provide the best experience (ie copy/paste features) 
+> The Google Chrome browser appears to provide the best experience (ie copy/paste features) 
    1)  From the AWS Home Page Console navigate to -> Systems Manager Console- > Fleet Manager feature under the "Node Management" header and the newly deployed ec2 instance should be listed in the "Managed nodes" list on this landing page.  
 
    2) Check the box next to the new windows ec2 instance
@@ -31,14 +33,4 @@ This AWS CDK project written in C# deploys a single Windows EC2 instance to the 
 
    5) Once connected click on the instanceid in the header section to expand the remote display or select the full screen option in the top right-hand coner of the display.  
 
-* See this reference for addditional guidance in setting up CDK within your AWS Environment: https://docs.aws.amazon.com/cdk/v2/guide/cli.html
-
-## Useful commands
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-It uses the [.NET Core CLI](https://docs.microsoft.com/dotnet/articles/core/) to compile and execute your project.
-
-* `dotnet build src` compile this app
-* `cdk deploy`       deploy this stack to your default AWS account/region
-* `cdk diff`         compare deployed stack with current state
-* `cdk synth`        emits the synthesized CloudFormation template
+> See this reference for addditional guidance in setting up CDK within your AWS Environment: https://docs.aws.amazon.com/cdk/v2/guide/cli.html
